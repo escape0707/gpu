@@ -1,0 +1,14 @@
+Bootstrap: docker
+From: pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+
+%post
+    pip install -U openai-whisper
+    apt update
+    apt install -y ffmpeg
+
+%runscript
+    whisper $@
+
+%labels
+   Author Jay Chu
+

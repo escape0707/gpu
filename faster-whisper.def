@@ -1,0 +1,14 @@
+Bootstrap: docker
+From: nvcr.io/nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
+
+%post
+    apt update && apt upgrade -y
+    apt install -y --no-install-recommends python3-pip
+    pip install -U whisper-ctranslate2
+
+%runscript
+    whisper-ctranslate2 $@
+
+%labels
+   Author Jay Chu
+
